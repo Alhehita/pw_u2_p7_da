@@ -15,24 +15,39 @@
         <hr>
         {{listasFrases}}
         <hr>
-        <ul >
+        <label for="idFrase">Frase:</label>
+
+        <input v-model="frase" id="idFrase" type="text">
+        <p>{{frase}}</p>
+
+        <label for="idAutor">Autor:</label>
+       <!-- <input v-on:keypress="eventoKeyPress" v-model="autor" id="idAutor" type="text"> -->
+        <input v-on:keypress.enter="eventoKeyPressModificador" v-model="autor" id="idAutor" type="text">
+
+        <br>
+        <br>
+        <button v-on:click="agregarFrase">Agregar al Inicio</button>
+        
+        <button v-on:click="agregarFraseFinal">Agregar al Final</button>
+        <hr>
+
+        <ul>
+         
+
+            <li v-for="{frase,autor} in listasFrases">{{frase}} &emsp; {{ autor}}
+                &emsp; <button v-show="autor!==null">{{autor}}</button>
+                <p v-show="autor!==null" >autor: {{autor}}</p>
+            </li>
+        </ul>
+
+        <ul>
             <li v-for="mifrase in listasFrases">{{mifrase.frase}} &emsp; {{ mifrase.autor}}
                 &emsp; <button>{{mifrase.autor}}</button>
                 <p>{{mifrase.frase}}</p>
             </li>
         </ul>
         <hr>
-        <ul >
-            <label for="idFrase">Frase:</label>
-            <input id="idFrase" type="text">
-            <label for="idAutor">Frase:</label>
-            <input id="idAutor" type="text">
-            <button>Agregar</button>
-            <li v-for="{frase,autor} in listasFrases">{{frase}} &emsp; {{ autor}}
-                &emsp; <button>{{autor}}</button>
-                <p>{{frase}}</p>
-            </li>
-        </ul>
+        
         <hr>
         <ul>
             <li>al que madruga le roban</li>
@@ -43,7 +58,7 @@
             <li>6</li>
         </ul>
     </div>
-    
+
 
     <script src="../js/appfrases.js"></script>
 

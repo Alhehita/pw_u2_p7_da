@@ -8,10 +8,59 @@ const app = Vue.createApp({
     data() {
         return {
             listasFrases: frases,
+            frase:null,
+          //  autor:'sin autor',
+          autor:null,
+
         }
     },
     methods: {
+        agregarFrase(){
+            console.log(this.frase);
+            console.log(this.autor);
 
+            const nuevaFrase = {
+                frase: this.frase,
+                autor:this.autor
+            };
+
+            this.listasFrases.unshift(nuevaFrase);
+
+        },
+        agregarFraseFinal(){
+            console.log(this.frase);
+            console.log(this.autor);
+
+            const nuevaFrase = {
+                frase: this.frase,
+                autor:this.autor
+            };
+
+            this.listasFrases.push(nuevaFrase);
+
+        },
+        eventoKeyPress({charCode, cancelable, key, keyCode,target}){
+           if(charCode ===13){
+           // console.log('evento');
+            console.log(cancelable)
+            console.log(key)
+
+            console.log(keyCode)
+            console.log(target)
+
+            this.agregarFraseFinal()
+           }
+
+        },
+        eventoKeyPressModificador(){
+            
+             console.log('evento');
+             
+ 
+             this.agregarFraseFinal()
+            
+ 
+         }
     }
 
 })
